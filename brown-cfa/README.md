@@ -1,7 +1,13 @@
-# Readme
+# Timothy Brown: Confirmatory Factor Analysis for Applied Research
+## Examples in lavaan
 
-* If possible a covariance matrix is used as input. This considerably lengthens the code, but makes the examples 'stand-alone' without the need for an external data file
-* not all examples are converted
-	- Table 9.12 IRT
-	- Table 10.2-10.5 (monte carlo approach to determine power)
-* links to data files can be found on [link]
+Not all examples are converted (yet):
+
+- Table 9.2 (Multiple Imputation, code given but warning/error)
+- Table 9.12 (IRT)
+- Table 10.2-10.5 (monte carlo approach to determine power)
+
+Not all examples use lavaan. Other packages used are:
+
+- semTools
+- factanal
