@@ -1,7 +1,7 @@
 # T. Brown: Confirmatory Factor Analysis for Applied Research
 ## Examples in lavaan
 
-Examples of the excellent [book](http://people.bu.edu/tabrown/cfabook.html) by Timothy Brown on confirmatory factor analysis converted to lavaan.
+Examples of the excellent [book](http://people.bu.edu/tabrown/cfabook.html) by Timothy Brown on confirmatory factor analysis translated to [lavaan](http://lavaan.org).
 
 Not all examples are converted (yet):
 
@@ -11,5 +11,5 @@ Not all examples are converted (yet):
 
 Not all examples use lavaan. Other packages used are:
 
-- semTools
-- factanal
+- [semTools](http://cran.r-project.org/web/packages/semTools/index.html)
+- [factanal](http://rss.acs.unt.edu/Rdoc/library/stats/html/factanal.html)
