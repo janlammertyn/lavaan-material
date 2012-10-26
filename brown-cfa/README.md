@@ -1,6 +1,8 @@
 # T. Brown: Confirmatory Factor Analysis for Applied Research
 ## Examples in lavaan
 
+Examples of the excellent [book](http://people.bu.edu/tabrown/cfabook.html) by Timothy Brown on confirmatory factor analysis converted to lavaan.
+
 Not all examples are converted (yet):
 
 - Table 9.2 (Multiple Imputation, code given but warning/error)
