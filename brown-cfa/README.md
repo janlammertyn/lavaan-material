@@ -1,4 +1,4 @@
-# Timothy Brown: Confirmatory Factor Analysis for Applied Research
+# T. Brown: Confirmatory Factor Analysis for Applied Research
 ## Examples in lavaan
 
 Not all examples are converted (yet):
