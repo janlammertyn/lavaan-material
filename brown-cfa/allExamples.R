@@ -2,7 +2,6 @@
 # - check residuals(fit, type = "standardized")$cov in mplus 6.12
 
 require(lavaan)
-setwd("~/current/cfa")
 
 ##############################################################################
 ##
@@ -126,7 +125,7 @@ summary(fit, standardized = TRUE, rsquare = TRUE)
 ## Measurement model of health status involving latent variables and single indicators
 ##
 ##############################################################################
-Data <- read.table("data/fig4.3.dat")
+Data <- read.table("http://people.bu.edu/tabrown/Ch4/fig4.3.dat")
 names(Data) <- c("subjid", "activ", "soma", "pain", "menth", "socf", "vital", "genhlth", "age")
 
 model <- '
@@ -309,7 +308,7 @@ standardizedSolution(fit)
 ## not in lavaan but e.g. with the factanal package
 ##
 ##############################################################################
-Data <- read.table("data/efa.dat")
+Data <- read.table("http://people.bu.edu/tabrown/Ch5/efa.dat")
 Data <- Data[,-13]
 names(Data) <- paste("x", 1:12, sep = "")
 
@@ -326,7 +325,7 @@ eigen(cor(Data))$values
 ## Drinking motives e/cfa
 ##
 ##############################################################################
-Data <- read.table("data/efa.dat")
+Data <- read.table("http://people.bu.edu/tabrown/Ch5/efa.dat")
 names(Data) <- paste("x", 1:13, sep = "") # x13 is not used in the model though
 
 
@@ -669,8 +668,7 @@ anova(fit.equali, fit.equalrv,  test = "chisq")
 ## major depressive disorder in men and women
 ##
 ##############################################################################
-
-Data <- read.table("data/MDDALL.dat")
+Data <- read.table("http://people.bu.edu/tabrown/Ch7/MDDALL.dat")
 names(Data) <- c("sex", paste("mdd", 1:9, sep = ""))
 Data$sex <- factor(Data$sex, levels = c(0, 1), labels = c("female", "male"))
 
@@ -979,7 +977,7 @@ inspect(fit9.2, "impute")
 ## robust maximum likelihood 
 ##
 ##############################################################################
-Data <- read.table("data/nonml.dat")
+Data <- read.table("http://people.bu.edu/tabrown/Ch9/NONML.DAT", nrows = 870)
 names(Data) <- c("x1", "x2", "x3", "x4", "x5")
 
 model <- '
@@ -996,7 +994,7 @@ summary(fit, fit.measures = TRUE)
 ## lavaan syntax for conducting CFA with categorical indicators
 ##
 ##############################################################################
-Data <- read.fwf("data/binary.dat", width = c(1,1,1,1,1,1), n = 750)
+Data <- read.fwf("http://people.bu.edu/tabrown/Ch9/BINARY.DAT", width = c(1,1,1,1,1,1), n = 750)
 names(Data) <- c(paste("y", 1:6, sep = ""))
 
 model <- '
@@ -1015,7 +1013,7 @@ summary(fit, fit.measures = TRUE)
 ## to equality)
 ##
 ##############################################################################
-Data <- read.fwf("data/binary.dat", width = c(1,1,1,1,1,1), n = 750)
+Data <- read.fwf("http://people.bu.edu/tabrown/Ch9/BINARY.DAT", width = c(1,1,1,1,1,1), n = 750)
 names(Data) <- c(paste("y", 1:6, sep = ""))
 
 model <- '
@@ -1035,7 +1033,7 @@ summary(fit, fit.measures = TRUE)
 ## indicators
 ## 
 ##############################################################################
-Data <- read.table("data/nonml.dat")
+Data <- read.table("http://people.bu.edu/tabrown/Ch9/NONML.DAT", nrows = 870)
 names(Data) <- c("x1", "x2", "x3", "x4", "x5")
 
 model <- '
@@ -1055,11 +1053,6 @@ parameterEstimates(fit, ci = TRUE, level = .90, boot.ci.type = "bca.simple")
 ## is significantly different from zero
 ## 
 ##############################################################################
-
-## warning
-# To make this work, the stop() in line 210 in 03lavaanSample.R has te be reduced to a warning
-# because normally the lower triangle of the sample covariance matrix should be filled. Here we 
-# have a special situation.
 
 ## Step 1: generate population covariance matrix from H1 model
 
