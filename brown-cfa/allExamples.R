@@ -1,6 +1,3 @@
-# Todo:
-# - check residuals(fit, type = "standardized")$cov in mplus 6.12
-
 require(lavaan)
 
 ##############################################################################
