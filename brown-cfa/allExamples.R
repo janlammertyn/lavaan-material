@@ -347,16 +347,6 @@ summary(fit, fit.measures = TRUE)
 mis <- modindices(fit)
 mis[mis$mi >= 10 & !is.na(mis$mi),]
 
-
-# # question: why doesn't this work?
-# model <- '
-#   coping  =~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + 0*x8 + x9 + x10 + x11 + 0*x12
-#   social  =~ x8 + 0*x1 + x2 + x3 + x4 + x5 + x6 + x7 + x9 + x10 + x11 + 0*x12
-#   enhance =~ x12 + 0*x1 + x2 + x3 + x4 + x5 + x6 + x7 + 0*x8 + x9 + x10 + x11
-# '
-# 
-# fit <- cfa(model, data = Data, std.lv = TRUE)
-
 ##############################################################################
 ##
 ## Table 6.2
