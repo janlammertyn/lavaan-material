@@ -91,9 +91,10 @@ fitted(fit)$cov
 # Fitted Residual Matrix
 resid(fit)$cov
 
-# Standardized Residual Matrix
+# Standardized Residual Matrix 
+# Brown reports LISREL 8.72 output which is different from the lavaan result
 resid(fit, type = "standardized")$cov
-## WARNING: deze laatste komt niet overeen met boek, ook niet met Mplus
+
 
 ##############################################################################
 ##
@@ -176,8 +177,9 @@ summary(fit, fit.measures = TRUE)
 ## RMSEA, CFI, TLI differ
 
 # Standardized Residual Matrix
+# Brown reports LISREL 8.72 output which is different from the lavaan result
 resid(fit, type = "standardized")$cov
-## different from book
+
 
 # modification indices
 modindices(fit)
@@ -237,7 +239,9 @@ model <- '
 fit <- cfa(model, sample.cov = covs, sample.nobs = 500, mimic = "mplus")
 
 # Standardized Residuals
+# Brown reports LISREL 8.72 output which is different from the lavaan result
 resid(fit, type = "standardized")$cov
+
 
 # Modification Indices
 modindices(fit)
@@ -264,6 +268,7 @@ fit <- cfa(model, sample.cov = covs, sample.nobs = 500, mimic = "mplus")
 ## WARNING: some fit measures are a bit different
 
 # Standardized Residuals
+# Brown reports LISREL 8.72 output which is different from the lavaan result
 resid(fit, type = "standardized")$cov
 
 # Modification Indices
@@ -289,6 +294,7 @@ model <- '
 fit <- cfa(model, sample.cov = covs, sample.nobs = 500, mimic = "mplus")
 
 # Standardized Residuals
+# Brown reports LISREL 8.72 output which is different from the lavaan result
 resid(fit, type = "standardized")$cov
 
 # Modification Indices
