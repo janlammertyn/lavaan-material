@@ -3,7 +3,7 @@ require(lavaan)
 ##############################################################################
 ##
 ## Table 3.2
-## (nothing lavaan here. Omit?)
+## (nothing lavaan here)
 ##
 ##############################################################################
 
@@ -74,7 +74,6 @@ model <- '
 
 fit <- cfa(model, sample.cov = covs, sample.nobs = 250, mimic = "mplus")
 
-## small difference in RMSEA CI
 
 ##############################################################################
 ##
@@ -329,7 +328,7 @@ eigen(cor(Data))$values
 ##
 ##############################################################################
 Data <- read.table("http://people.bu.edu/tabrown/Ch5/efa.dat")
-names(Data) <- paste("x", 1:13, sep = "") # x13 is not used in the model though
+names(Data) <- paste("x", 1:13, sep = "") # x13 is not used in the model
 
 
 model <- '
@@ -349,12 +348,11 @@ mis <- modindices(fit)
 mis[mis$mi >= 10 & !is.na(mis$mi),]
 
 
-# # warning: why doesn't this work?
+# # question: why doesn't this work?
 # model <- '
 #   coping  =~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + 0*x8 + x9 + x10 + x11 + 0*x12
 #   social  =~ x8 + 0*x1 + x2 + x3 + x4 + x5 + x6 + x7 + x9 + x10 + x11 + 0*x12
 #   enhance =~ x12 + 0*x1 + x2 + x3 + x4 + x5 + x6 + x7 + 0*x8 + x9 + x10 + x11
-# 
 # '
 # 
 # fit <- cfa(model, data = Data, std.lv = TRUE)
@@ -404,8 +402,6 @@ model <- '
 
 fit <- cfa(model, sample.cov = covs, sample.nobs = 500, std.lv = TRUE)
 summary(fit, fit.measures = TRUE, standardized = TRUE)
-
-# Question: How are the correlated Uniqueness numbers in table 6.4 calculated?
 
 
 ##############################################################################
@@ -712,7 +708,7 @@ anova(fit.ef, fit.efl, fit.eii, fit.eir, fit.fv, fit.fm, test = "chisq")
 ## .. continued from previous chunk 
 ##############################################################################
 summary(fit.ef, standardized = TRUE, rsquare = TRUE)
-## warning: std.all for covariances different from book, check new version MPlus
+
 
 ##############################################################################
 ##
@@ -1022,12 +1018,22 @@ names(Data) <- c(paste("y", 1:6, sep = ""))
 model <- '
   etoh =~ l1*y1 + l1*y2 + l1*y3 + l1*y4 + l1*y5 + l1*y6
 '
+model <- '
+  etoh =~ y1 + l1*y2 + l1*y3 + l1*y4 + l1*y5 + l1*y6
+'
+
+fit <- cfa(model, data = Data, ordered = names(Data), mimic = "mplus")
+summary(fit, fit.measures = TRUE)
+
 
 fit <- cfa(model, data = Data, ordered = names(Data), std.lv = TRUE, mimic = "mplus")
 summary(fit, fit.measures = TRUE)
-##WARNING 
-# - this needs work. df not same. compare with lates mplus version
-# - to do: difference test
+
+# Remark
+# - The output in the book does not correspond to the output of Mplus 6.12
+# - The output of lavaan corresponds to the output of Mplus 6.12
+# - The difference test is not implemented yet
+
 
 ##############################################################################
 ##
