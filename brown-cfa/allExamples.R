@@ -986,44 +986,37 @@ summary(fit, fit.measures = TRUE)
 Data <- read.fwf("http://people.bu.edu/tabrown/Ch9/BINARY.DAT", width = c(1,1,1,1,1,1), n = 750)
 names(Data) <- c(paste("y", 1:6, sep = ""))
 
-model <- '
+model1 <- '
   etoh =~ y1 + y2 + y3 + y4 + y5 + y6
 '
 
-fit <- cfa(model, data = Data, ordered = names(Data))
-summary(fit, fit.measures = TRUE)
+fit1 <- cfa(model1, data = Data, ordered = names(Data), estimator = "WLSMVS", mimic = "mplus")
+summary(fit1, fit.measures = TRUE)
 
 
 ##############################################################################
 ##
 ## Table 9.11
-## lavaan syntax for conducting nested model comparison wit WLSMV: One factor
+## lavaan syntax for conducting nested model comparison with WLSMV: One factor
 ## CFA of alcohol dependence with binary indicators (factor loadings constrained
 ## to equality)
 ##
 ##############################################################################
-Data <- read.fwf("http://people.bu.edu/tabrown/Ch9/BINARY.DAT", width = c(1,1,1,1,1,1), n = 750)
-names(Data) <- c(paste("y", 1:6, sep = ""))
 
-model <- '
-  etoh =~ l1*y1 + l1*y2 + l1*y3 + l1*y4 + l1*y5 + l1*y6
-'
-model <- '
+# continued from previous example
+
+model2 <- '
   etoh =~ y1 + l1*y2 + l1*y3 + l1*y4 + l1*y5 + l1*y6
 '
 
-fit <- cfa(model, data = Data, ordered = names(Data), mimic = "mplus")
-summary(fit, fit.measures = TRUE)
+fit2 <- cfa(model2, data = Data, ordered = names(Data), estimator = "WLSMVS", mimic = "mplus")
+summary(fit2, fit.measures = TRUE)
 
+# diff test
+anova(fit1, fit2)
 
-fit <- cfa(model, data = Data, ordered = names(Data), std.lv = TRUE, mimic = "mplus")
-summary(fit, fit.measures = TRUE)
-
-# Remark
-# - The output in the book does not correspond to the output of Mplus 6.12
-# - The output of lavaan corresponds to the output of Mplus 6.12
-# - The difference test is not implemented yet
-
+# The output does not correspond exactly to what is reported by mplus.
+# see: https://groups.google.com/forum/?fromgroups=#!topic/lavaan/LxqIagOPmRU
 
 ##############################################################################
 ##
